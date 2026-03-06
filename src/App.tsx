@@ -84,10 +84,8 @@ function App() {
   const mainRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
   const realFruitRef = useRef<HTMLDivElement>(null)
-  const noPreservativesRef = useRef<HTMLDivElement>(null)
   const madeWithLoveRef = useRef<HTMLDivElement>(null)
   const pureMangoRef = useRef<HTMLDivElement>(null)
-  const pureJoyRef = useRef<HTMLDivElement>(null)
   
   // Scroll to top visibility
   useEffect(() => {
@@ -168,31 +166,6 @@ function App() {
         .to(".real-label", { x: "-10vw", opacity: 0 }, 0.75)
         .to(".real-paragraph", { x: "10vw", opacity: 0 }, 0.75)
       
-      // No Preservatives Section
-      const noPreservativesTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: noPreservativesRef.current,
-          start: "top top",
-          end: sceneLength,
-          pin: true,
-          scrub: 0.6,
-        }
-      })
-      
-      noPreservativesTl
-        .fromTo(".np-headline",
-          { x: isMobile ? "-30vw" : "-60vw", opacity: 0 },
-          { x: 0, opacity: 1 },
-          0
-        )
-        .fromTo(".np-mango",
-          { x: isMobile ? "25vw" : "50vw", rotation: isMobile ? 12 : 18, scale: isMobile ? 0.92 : 0.85 },
-          { x: 0, rotation: 0, scale: 1 },
-          0
-        )
-        .to(".np-headline", { y: isMobile ? "-12vh" : "-22vh", opacity: 0 }, 0.7)
-        .to(".np-mango", { x: isMobile ? "22vw" : "40vw", rotation: isMobile ? -12 : -22, opacity: 0 }, 0.7)
-      
       // Made With Love Section
       const madeWithLoveTl = gsap.timeline({
         scrollTrigger: {
@@ -260,37 +233,6 @@ function App() {
         .to(".pm-mango", { x: isMobile ? "-16vw" : "-28vw", y: isMobile ? "-10vh" : "-18vh", scale: isMobile ? 0.82 : 0.72, rotation: isMobile ? 10 : 18 }, 0.7)
         .to(".pm-headline", { x: isMobile ? "14vw" : "30vw", opacity: 0 }, 0.7)
         .to(".pm-subcontent", { y: isMobile ? "8vh" : "12vh", opacity: 0 }, 0.72)
-      
-      // Pure Joy Section
-      const pureJoyTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: pureJoyRef.current,
-          start: "top top",
-          end: sceneLength,
-          pin: true,
-          scrub: 0.6,
-        }
-      })
-      
-      pureJoyTl
-        .fromTo(".pj-mango",
-          { x: isMobile ? "30vw" : "60vw", rotation: isMobile ? 12 : 22, scale: isMobile ? 0.84 : 0.75 },
-          { x: 0, rotation: 0, scale: 1 },
-          0
-        )
-        .fromTo(".pj-headline",
-          { x: "-50vw", opacity: 0 },
-          { x: 0, opacity: 1 },
-          0.08
-        )
-        .fromTo(".pj-subcontent",
-          { y: "12vh", opacity: 0 },
-          { y: 0, opacity: 1 },
-          0.12
-        )
-        .to(".pj-mango", { x: isMobile ? "20vw" : "40vw", rotation: isMobile ? -10 : -18, opacity: 0 }, 0.7)
-        .to(".pj-headline", { y: isMobile ? "-10vh" : "-18vh", opacity: 0 }, 0.7)
-        .to(".pj-subcontent", { y: isMobile ? "9vh" : "14vh", opacity: 0 }, 0.72)
       
       // Flowing sections animation
       gsap.utils.toArray<HTMLElement>('.flow-reveal').forEach((el) => {
@@ -467,41 +409,7 @@ function App() {
         </div>
       </section>
 
-      {/* Section 3: No Preservatives */}
-      <section 
-        ref={noPreservativesRef}
-        className="section-pinned bg-[#FFD400]"
-        style={{ zIndex: 30 }}
-      >
-        <div className="relative w-full h-full px-4 sm:px-6 lg:px-8 xl:px-12">
-          {/* Headline */}
-          <div className="np-headline absolute left-[6vw] top-[18vh] max-w-[52vw]">
-            <h2 className="display-section text-[#1A1A1A]">
-              NO<br />PRESERVATIVES<br />WHATSOEVER
-            </h2>
-          </div>
-          
-          {/* Mango */}
-          <div className="np-mango absolute right-[-10vw] top-[46vh] -translate-y-1/2 w-[58vw] max-w-[700px]">
-            <img 
-              src="/images/hero-mango.png" 
-              alt="Fresh mango" 
-              loading="lazy"
-              decoding="async"
-              className="w-full h-auto mango-shadow"
-            />
-          </div>
-          
-          {/* Caption */}
-          <div className="np-caption-wrap absolute left-[6vw] bottom-[10vh] max-w-[30vw]">
-            <p className="np-caption text-[#2A2A2A] text-base md:text-lg">
-              Cold-processed. Small batches. Honest ingredients.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Made With Love */}
+      {/* Section 3: Made With Love */}
       <section 
         ref={madeWithLoveRef}
         className="section-pinned"
@@ -577,45 +485,8 @@ function App() {
         </div>
       </section>
 
-      {/* Section 6: Pure Joy  removed */}
-      <section 
-        ref={pureJoyRef}
-        className="section-pinned bg-[#FFD400]"
-        style={{ zIndex: 60 }}
-      >
-        <div className="relative w-full h-full px-4 sm:px-6 lg:px-8 xl:px-12">
-          {/* Mango */}
-          <div className="pj-mango absolute right-[-14vw] top-[50vh] -translate-y-1/2 w-[72vw] max-w-[850px]">
-            <img 
-              src="/images/hero-mango.png" 
-              alt="Pure joy mango" 
-              loading="lazy"
-              decoding="async"
-              className="w-full h-auto mango-shadow"
-            />
-          </div>
-          
-          {/* Headline */}
-          <div className="pj-headline absolute left-[6vw] top-[18vh]">
-            <h2 className="display-section text-[#1A1A1A]">
-              PURE<br />JOY
-            </h2>
-          </div>
-          
-          {/* Subcontent */}
-          <div className="pj-subcontent absolute left-[6vw] top-[58vh] max-w-[34vw]">
-            <p className="text-[#2A2A2A] text-base md:text-lg mb-6">
-              One spoonful of summer. Anytime you want it.
-            </p>
-            <button onClick={() => scrollToSection('contact')} className="btn-primary">
-              Shop Now
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 7: Texture & Flavor (Flowing) */}
-      <section className="section-flowing bg-[#FFD400]" style={{ zIndex: 70 }}>
+      {/* Section 4: Texture & Flavor (Flowing) */}
+      <section className="section-flowing !pt-8 md:!pt-12 bg-[#FFD400]" style={{ zIndex: 70 }}>
         <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="flow-reveal mb-12">
             <h2 className="display-section text-[#1A1A1A] mb-4">THICK, GOLDEN, AROMATIC</h2>
