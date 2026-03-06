@@ -98,7 +98,7 @@ function App() {
   
   // GSAP Animations
   useEffect(() => {
-    const sceneLength = isMobile ? "+=100%" : "+=130%"
+    const sceneLength = isMobile ? "+=85%" : "+=95%"
     
     const ctx = gsap.context(() => {
       // Hero Section Animation
